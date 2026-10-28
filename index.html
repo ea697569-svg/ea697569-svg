@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover reaction GIFs, sports moments, funny animal clips and motivational visuals. Search, copy, download and create GIFs with OURS / GIF.">
+    <meta name="theme-color" content="#090b12">
+    <meta property="og:title" content="OURS / GIF — Reaction GIFs & GIF Creator">
+    <meta property="og:description" content="Explore reaction GIFs, search by category, play GIF games and create a GIF from your own video.">
+    <meta property="og:type" content="website">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>OURS / Gif</title>
+
+</head>
+<body class="bg-dark text-white" onload="openFromUrl()">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black py-2">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold fs-3 tracking-wider me-4" href="index.html" aria-label="OURS GIF home">OURS / GIF</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto align-items-lg-center">
+                    <!-- Reactions Mega Dropdown Button -->
+                    <li class="nav-item position-static">
+                        <a class="nav-link dropdown-toggle category-dropdown-btn d-flex align-items-center gap-2 text-white fw-bold" href="#" id="reactionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg width="22" height="22" fill="#00ccff" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                            </svg>
+                            <span>Reactions</span>
+                        </a>
+                        <!-- Full-Width Mega Menu Container -->
+                        <div class="dropdown-menu w-100 mega-dropdown p-4 border-0 shadow-lg" aria-labelledby="reactionsDropdown">
+                            <div class="container">
+                                <div class="row g-3">
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('happy'); return false;">Happy</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('sad'); return false;">Sad</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('love'); return false;">Love</a>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('hug'); return false;">Hug</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('what'); return false;">What</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('laughing'); return false;">Laughing</a>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('shocked'); return false;">Shocked</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('thumbsup'); return false;">Thumbs Up</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('wtf'); return false;">WTF</a>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('angry'); return false;">Angry</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('welcome'); return false;">Welcome</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('ok'); return false;">OK</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Categories Mega Dropdown -->
+                    <li class="nav-item position-static ms-lg-3">
+                        <a class="nav-link dropdown-toggle text-white fw-bold d-flex align-items-center gap-2" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg width="20" height="20" fill="#ff0066" viewBox="0 0 16 16">
+                                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
+                            </svg>
+                            <span>Categories</span>
+                        </a>
+                        <!-- Full-Width Categories Mega Menu Container -->
+                        <div class="dropdown-menu w-100 mega-dropdown p-4 border-0 shadow-lg" aria-labelledby="categoriesDropdown">
+                            <div class="container">
+                                <div class="row g-3">
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('anime'); return false;">Anime</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('cartoons'); return false;">Cartoons</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('movies'); return false;">Movies</a>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('memes'); return false;">Memes</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('music'); return false;">Music</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('funny'); return false;">Funny</a>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('nature'); return false;">Nature</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('sports'); return false;">Sports</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('animals'); return false;">Animals</a>
+                                    </div>
+                                    <div class="col-6 col-md-3">
+                                        <a class="mega-link" href="#" onclick="filterByCategory('science'); return false;">Science</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('trending'); return false;">Trending</a>
+                                        <a class="mega-link" href="#" onclick="filterByCategory('gaming'); return false;">Gaming</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Games Dropdown -->
+                    <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle text-white fw-bold d-flex align-items-center gap-2" href="#" id="gamesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>🎮 Games</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="gamesDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="startGuessGame(); return false;">🧠 GIF Guess</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="roulette(); return false;">🎲 Surprise Me</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="startBattle(); return false;">⚔️ GIF Battles</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="startMemory(); return false;">🃏 Memory Match</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Create GIF button -->
+                <button class="btn btn-outline-warning fw-bold me-2" onclick="roulette()">🎲 Surprise Me</button>
+                <button class="btn btn-outline-info fw-bold" onclick="toggleCreator()">🎬 Create GIF</button>
+            </div>
+        </div>
+    </nav>
+    <!-- Introductory content: explain the site's purpose before the GIF gallery -->
+    <main id="main-content">
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">REACTIONS • MEMES • CREATION</p>
+        <h1 id="hero-title">Find the right GIF for the moment.</h1>
+        <p class="hero-lead">OURS / GIF is a small, playful library for exploring reaction images, sports moments, animal clips and motivational visuals. Search the collection, open an item to view it larger, copy or download media where permitted, or make a GIF from a video you own.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#media-grid">Explore the collection</a>
+          <button class="btn btn-outline-info" type="button" onclick="toggleCreator()">Create a GIF</button>
+        </div>
+      </div>
+      <div class="hero-note"><span class="hero-note-icon" aria-hidden="true">✦</span><strong>Made for quick reactions</strong><p>Use the search and category menus to find a moment, then open a card for its available actions.</p></div>
+    </section>
+
+    <section class="intro-section" aria-labelledby="how-title">
+      <h2 id="how-title">How to use OURS / GIF</h2>
+      <div class="info-grid">
+        <article class="info-card"><span aria-hidden="true">🔎</span><h3>Search and explore</h3><p>Search by an item ID or a keyword such as sports, cat, funny or motivation. Use Reactions and Categories to narrow the collection.</p></article>
+        <article class="info-card"><span aria-hidden="true">📤</span><h3>Copy or download</h3><p>Open a card to see its larger preview and available actions. Whether you may reuse a GIF depends on its creator's rights and licence.</p></article>
+        <article class="info-card"><span aria-hidden="true">🎬</span><h3>Create your own</h3><p>Choose a video you have permission to use, select a short section and create a GIF in your browser. Processing depends on your device and browser.</p></article>
+      </div>
+    </section>
+
+    <div class="search-wrapper" role="search" aria-label="Search the GIF collection">
+      <label for="search-bar" class="search-label">Search the collection</label>
+      <input type="search" id="search-bar" placeholder="Try sports, cat, motivation or ID 101" oninput="filterItems()" autocomplete="off">
+      <p class="search-help">Tip: search by topic or ID. Clear the field to see every item.</p>
+    </div>
+
+
+
+<!-- ===== GIF GUESS GAME ===== -->
+<div id="guess-panel" class="creator-panel" style="display:none;">
+  <h3 class="text-center mb-1">🧠 GIF Guess</h3>
+  <p class="text-center" style="color:#aaa; font-size:14px;">Which category is this GIF?</p>
+  <div class="text-center mb-2" style="color:#ccc;">Round <span id="guess-round">1</span>/8 &nbsp;·&nbsp; Score: <span id="guess-score">0</span> 🔥</div>
+  <div class="text-center mb-3">
+    <img id="guess-img" class="img-fluid rounded" style="max-height:240px; min-height:180px; background:#000;" alt="Guess the GIF">
+  </div>
+  <div id="guess-options" class="d-grid gap-2" style="grid-template-columns:1fr 1fr;"></div>
+  <div id="guess-end" style="display:none; text-align:center;">
+    <h4 id="guess-final"></h4>
+    <button class="btn btn-primary mt-2" onclick="startGuessGame()">🔁 Play Again</button>
+  </div>
+  <p id="guess-feedback" class="text-center mt-2 fw-bold" style="min-height:22px;"></p>
+</div>
+<!-- ========================== -->
+
+
+<!-- ===== GIF BATTLE ===== -->
+<div id="battle-panel" class="creator-panel" style="display:none;">
+  <h3 class="text-center mb-1">⚔️ GIF Battle</h3>
+  <p class="text-center" style="color:#aaa; font-size:14px;">Click the funnier GIF — it earns a point!</p>
+  <div class="d-flex gap-3 justify-content-center flex-wrap">
+    <div class="text-center battle-side" onclick="voteBattle(0)">
+      <img id="battle-img-0" class="rounded battle-img" alt="GIF A">
+      <div id="battle-score-0" class="mt-1" style="color:#ccc;">0 ❤️</div>
+    </div>
+    <div class="text-center battle-side" onclick="voteBattle(1)">
+      <img id="battle-img-1" class="rounded battle-img" alt="GIF B">
+      <div id="battle-score-1" class="mt-1" style="color:#ccc;">0 ❤️</div>
+    </div>
+  </div>
+  <p id="battle-feedback" class="text-center mt-2 fw-bold" style="min-height:22px; color:#28a745;"></p>
+  <p class="text-center" style="color:#666; font-size:12px;">Click either side to load the next battle</p>
+</div>
+
+<!-- ===== MEMORY MATCH ===== -->
+<div id="memory-panel" class="creator-panel" style="display:none;">
+  <h3 class="text-center mb-1">🃏 Memory Match</h3>
+  <p class="text-center" style="color:#aaa; font-size:14px;">Find all matching pairs — fewest clicks wins!</p>
+  <div class="text-center mb-2" style="color:#ccc;">Clicks: <span id="mem-clicks">0</span> &nbsp;·&nbsp; Pairs: <span id="mem-pairs">0</span>/6</div>
+  <div id="memory-grid" class="memory-grid"></div>
+  <div id="memory-end" style="display:none; text-align:center;">
+    <h4 id="memory-final"></h4>
+    <button class="btn btn-primary mt-2" onclick="startMemory()">🔁 Play Again</button>
+  </div>
+</div>
+
+<!-- ===== GIF CREATOR PANEL ===== -->
+<div id="creator-panel" class="creator-panel" style="display:none;">
+  <h3 class="text-center mb-3">🎬 Create your own GIF</h3>
+  <div class="creator-controls">
+    <input type="file" id="video-input" accept="video/*" class="form-control mb-3" onchange="loadCreatorVideo(event)">
+    <video id="creator-video" controls style="display:none; width:100%; max-height:260px; border-radius:8px; background:#000;" class="mb-3"></video>
+    <div id="creator-options" style="display:none;">
+      <label class="form-label">Start time: <span id="start-label">0.0s</span></label>
+      <input type="range" id="gif-start" class="form-range" min="0" max="10" step="0.1" value="0" oninput="updateCreatorLabels()">
+      <label class="form-label">Length: <span id="len-label">2.0s</span></label>
+      <input type="range" id="gif-length" class="form-range" min="1" max="5" step="0.5" value="2">
+      <input type="text" id="gif-text" class="form-control mt-2" placeholder="✏️ Caption text (optional)">
+      <button class="btn btn-primary w-100 mt-3" id="make-gif-btn" onclick="makeGif()">⚡ Make GIF</button>
+    </div>
+    <div id="gif-result" class="mt-3" style="display:none; text-align:center;">
+      <img id="gif-output" class="img-fluid rounded" style="max-height:280px;" alt="Your GIF">
+      <a id="gif-download" class="btn btn-success w-100 mt-2" download="my-gif.gif">⬇️ Download GIF</a>
+    </div>
+    <p id="creator-status" class="text-center mt-2" style="color:#aaa; font-size:14px;"></p>
+  </div>
+</div>
+<!-- =============================== -->
+
+    <section class="gallery-heading" aria-labelledby="gallery-title">
+      <div><p class="eyebrow">THE COLLECTION</p><h2 id="gallery-title">Browse the GIF library</h2><p>Each item has an ID to make it easier to find again. The current collection is small and will grow as more original or properly licensed items are added.</p></div>
+      <span class="collection-count">8 starter items</span>
+    </section>
+ <div class="grid-container" id="media-grid" aria-label="GIF collection">
+    
+    <!-- Item 1 -->
+    <div onclick="openTheater(this)" class="grid-card" data-id="101" data-category="sports football messi">
+      <img class="media-item" src="image/LionelMessi.webp" alt="Lionel Messi football moment" loading="lazy"><div class="card-copy"><h3>Football moment</h3><p>A sports reaction for football conversations.</p></div>
+      <div class="item-id-label">ID: 101</div>
+      <button class="copy-btn" onclick="copyGif(event, '101')">📋 Copy GIF</button>
+    </div>
+
+    <!-- Item 2 -->
+    <div onclick="openTheater(this)" class="grid-card" data-id="102" data-category="sports football messi reaction">
+      <img class="media-item" src="image/Messi.webp" alt="Messi reaction image" loading="lazy"><div class="card-copy"><h3>Football reaction</h3><p>Use this item when a match moment says it all.</p></div>
+      <div class="item-id-label">ID: 102</div>
+      <button class="copy-btn" onclick="copyGif(event, '102')">📋 Copy GIF</button>
+    </div>
+
+    <!-- Item 3 -->
+    <div onclick="openTheater(this)" class="grid-card" data-id="103" data-category="sports football animated">
+        <img class="media-item" src="image/Messi.gif" alt="Animated football moment featuring Messi" loading="lazy"><div class="card-copy"><h3>Animated football clip</h3><p>A moving sports moment from the starter collection.</p></div>
+      <div class="item-id-label">ID: 103</div>
+      <button class="copy-btn" onclick="copyGif(event, '103')">📋 Copy GIF</button>
+    </div>
+
+    <!-- Item 4 -->
+    <div onclick="openTheater(this)" class="grid-card" data-id="104" data-category="animals cat cute">
+      <img class="media-item" src="image/cat.webp" alt="Cat reaction image" loading="lazy"><div class="card-copy"><h3>Cat reaction</h3><p>A cute animal moment for light-hearted replies.</p></div>
+      <div class="item-id-label">ID: 104</div>
+      <button class="copy-btn" onclick="copyGif(event, '104')">📋 Copy GIF</button>
+    </div>
+
+    <!-- Item 5 -->
+    <div onclick="openTheater(this)" class="grid-card" data-id="201" data-category="motivation inspirational">
+      <img class="media-item" src="image/nevergiveup.webp" alt="Motivational never give up visual" loading="lazy"><div class="card-copy"><h3>Keep going</h3><p>A motivational visual for encouragement and persistence.</p></div>
+      <div class="item-id-label">ID: 201</div>
+      <button class="copy-btn" onclick="copyGif(event, '201')">📋 Copy GIF</button>
+    </div>
+
+    <!-- Item 6 -->
+    <div onclick="openTheater(this)" class="grid-card" data-id="202" data-category="motivation perseverance">
+      <img class="media-item" src="image/neverigveup3.webp" alt="Motivational visual about perseverance" loading="lazy"><div class="card-copy"><h3>Stay determined</h3><p>A reminder to keep working towards your goals.</p></div>
+      <div class="item-id-label">ID: 202</div>
+      <button class="copy-btn" onclick="copyGif(event, '202')">📋 Copy GIF</button>
+    </div>
+
+    <div onclick="openTheater(this)" class="grid-card" data-id="203" data-category="funny memes reaction">
+      <img class="media-item" src="image/giphy (1).webp" alt="Funny reaction visual" loading="lazy"><div class="card-copy"><h3>Funny reaction</h3><p>A quick visual response for casual conversations.</p></div>
+      <div class="item-id-label">ID: 203</div>
+      <button class="copy-btn" onclick="copyGif(event, '203')">📋 Copy GIF</button>
+    </div>
+
+     <div onclick="openTheater(this)" class="grid-card" data-id="204" data-category="reaction memes">
+      <img class="media-item" src="image/giphy.webp" alt="Reaction visual from the starter collection" loading="lazy"><div class="card-copy"><h3>Quick reaction</h3><p>Browse this item when you need a simple reaction.</p></div>
+      <div class="item-id-label">ID: 204</div>
+      <button class="copy-btn" onclick="copyGif(event, '204')">📋 Copy GIF</button>
+    </div>
+
+  </div>
+
+
+
+
+    <p id="no-results" class="no-results" hidden>No items match that search yet. Try a broader keyword or clear the search field.</p>
+    </main>
+
+    <section class="use-note" aria-labelledby="reuse-title">
+      <h2 id="reuse-title">Use media responsibly</h2>
+      <p>Some images and GIFs may depict people, characters or works owned by others. A file being visible or downloadable does not automatically mean it is free to republish. Before reusing or sharing an item outside personal use, check the original source, licence and applicable permissions. For the GIF creator, use only videos and audio you own or are authorised to use.</p>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-brand"><a href="index.html">OURS / GIF</a><p>A small reaction-GIF library and browser-based GIF maker.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a><a href="copyright.html">Copyright</a>
+      </nav>
+      <p class="footer-note">© <span id="current-year">2026</span> OURS / GIF. Please respect creators' rights.</p>
+    </footer>
+
+<!-- ===== GIF THEATER (fullscreen viewer) ===== -->
+<div id="theater" class="theater" onclick="if(event.target===this) closeTheater()">
+  <button class="theater-close" onclick="closeTheater()">✕</button>
+  <img id="theater-img" class="theater-img" alt="GIF">
+  <div class="theater-id" id="theater-id"></div>
+  <div class="theater-actions">
+    <button class="btn btn-primary" onclick="copyTheaterGif()">📋 Copy GIF</button>
+    <a id="theater-download" class="btn btn-success" download="gif.gif">⬇️ Download</a>
+    <button class="btn btn-outline-light" onclick="shareTheaterLink()">🔗 Copy Link</button>
+  </div>
+</div>
+<div id="toast" class="toast-msg"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gifshot@0.4.5/dist/gifshot.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
